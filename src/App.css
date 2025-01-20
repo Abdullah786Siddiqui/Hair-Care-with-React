@@ -2,7 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
+}
+body{
+  padding-top: 109.45px;
+ 
 }
 .icon-div,
 .logo,
@@ -229,7 +233,7 @@ a.action_container:link {
 .contact-header {
   background: linear-gradient(to right, #6a11cb, #0dcaf0);
   color: white;
-  padding: 50px 20px;
+  padding: 25px 10px;
   text-align: center;
 }
 .contact-header h1 {
@@ -249,4 +253,21 @@ a.action_container:link {
 }
 body{
   background-color: whitesmoke !important;
+}
+.loading {
+  height: 0;
+  width: 0;
+  padding: 15px;
+  border: 6px solid #e4e6eb; 
+  border-right-color: #1877f2; 
+  border-radius: 22px;
+  -webkit-animation: rotate 1s infinite linear;
+  position: absolute;
+
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }

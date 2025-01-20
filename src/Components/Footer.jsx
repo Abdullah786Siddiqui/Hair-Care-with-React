@@ -6,7 +6,10 @@ import { FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <div className="container-fluid mt-5 px-5 pt-4 footer-gradient">
+    <div
+      className="container-fluid  px-5 pt-4 footer-gradient  "
+      style={{ position: "sticky", bottom: "10" }}
+    >
       <footer>
         <div className="row">
           <div className="col-md-5">
@@ -31,7 +34,6 @@ const Footer = () => {
               Hair Care
             </Link>
             <br />
-            
 
             <Link
               to={"/Contact"}
@@ -112,15 +114,17 @@ const Footer = () => {
         <div className="text-center mt-4 text-white">
           &copy; 2024 - E-commerce Website All rights reserved
           <br />
-          <a href="https://www.facebook.com/">
-            <FaFacebook id="facebook" />
-          </a>
-          <a href="https://www.instagram.com/">
-            <FaInstagram id="insta" />
-          </a>
-          <a href="https://twitter.com/">
-            <RiTwitterXFill  id="X"/>
-          </a>
+          <div className="mt-2">
+            <a href="https://www.facebook.com/">
+              <FaFacebook id="facebook" />
+            </a>
+            <a href="https://www.instagram.com/">
+              <FaInstagram id="insta" />
+            </a>
+            <a href="https://twitter.com/">
+              <RiTwitterXFill id="X" />
+            </a>
+          </div>
         </div>
       </footer>
     </div>

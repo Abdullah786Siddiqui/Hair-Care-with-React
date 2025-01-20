@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header>
+    <header  className=" fixed-top">
       <div className="main-cont">
         <div className="navbar1 bg-light p-1 d-flex justify-content-between">
           <div className="name-div d-flex justify-content-center w-100">
@@ -17,7 +17,7 @@ const Header = () => {
           </div>
           <div className="icon-div d-flex fs-4 align-items-center">
             <Link to={"/"}> <FaHome  className="mx-1 text-black" /></Link>
-            <Link to={"/User"}><FaRegUser className="mx-2 text-black" /></Link>
+            <Link to={"/Login"}><FaRegUser className="mx-2 text-black" /></Link>
           <a className="action_container" >
                  
                      <span className="action_name text-black"><FaCartShopping /></span>
@@ -29,7 +29,7 @@ const Header = () => {
             
           </div>
         </div>
-        <div className="navbar navbar-expand-md bg-light  ">
+        <div className="navbar navbar-expand-md bg-light   ">
           <div style={{ display: "none" }} className=" " id="social">
             <i className="fa-brands fa-facebook   "></i>
             <i className="fa-brands fa-instagram " id="insta"></i>
