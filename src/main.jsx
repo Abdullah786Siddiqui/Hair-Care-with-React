@@ -14,6 +14,7 @@ import ProductDetail from "./Routes/ProductDetail.jsx";
 import Men from "./Components/Men.jsx";
 import Login from "./Components/Login.jsx";
 import Create from "./Components/Create.jsx";
+import AddtoCart from "./Routes/Add-to-Cart.jsx";
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
   { path: "/productpages", element: <Productpages /> },
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   { path: "/Contact", element: <Contact /> },
   { path: "/Login", element: <Login /> },
   { path: "/Create", element: <Create /> },
+  { path: "/AddtoCart", element: <AddtoCart /> },
+
+  
+
 
 
 

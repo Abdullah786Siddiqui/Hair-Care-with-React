@@ -13,7 +13,7 @@ const Men = () => {
   return (
     <>
       <Header />
-      <div class="container mt-5">
+      <div class="container mt-3">
         <h1 id="product-heading" class="text-center mb-3">
           Hair Care
         </h1>
@@ -21,7 +21,7 @@ const Men = () => {
         <div class="row" id="product-list">
           <div class="">
             <div class="">
-              <a class=" view-details text" data-id="19">
+              <a class=" view-details " data-id="19">
                 <div class="image-container position-relative">
                   {/* <!--normal image--> */}
                   <img
@@ -39,10 +39,10 @@ const Men = () => {
             </div>
           </div>
 
-          <div class=" text-center ">
-            <div class="text">
-              <a class=" view-details text"></a>
-              <h1 class="text-center mt-2">
+          <div class="container text-center mt-3 ">
+            <div class="">
+              <a class=" view-details "></a>
+              <h1 class="text-center ">
                 WE'RE MEN, OF COURSE WE USE CONATURAL
               </h1>
               <p class="text-center  mt-3">

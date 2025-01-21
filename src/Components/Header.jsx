@@ -1,9 +1,12 @@
 import { FaRegUser } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
-import { FaHome } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+   const products = useSelector((Store) => Store.cartProduct);
+ 
   return (
     <header  className=" fixed-top">
       <div className="main-cont">
@@ -16,13 +19,13 @@ const Header = () => {
             </h2>
           </div>
           <div className="icon-div d-flex fs-4 align-items-center">
-            <Link to={"/"}> <FaHome  className="mx-1 text-black" /></Link>
+            <Link to={"/"}><FaRegHeart className="mx-1 text-black fs-4" /></Link>
             <Link to={"/Login"}><FaRegUser className="mx-2 text-black" /></Link>
-          <a className="action_container" >
-                 
+          <Link to={"/AddtoCart"} className="action_container" >
+                   
                      <span className="action_name text-black"><FaCartShopping /></span>
-                     <span className="bag-item-count">0</span>
-                 </a>
+                     <span className="bag-item-count">{products.length}</span>
+                 </Link >
             
              
             

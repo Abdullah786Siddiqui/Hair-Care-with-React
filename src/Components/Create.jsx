@@ -31,9 +31,9 @@ const Create = () => {
   return (
     <>
       <Header />
-      <div className="container w-25 mt-4 mb-5">
+      <div className="container  mt-4 mb-5">
         <h3 className="text-center  signup mt-3">SIGN UP</h3>
-        <form id="Signup-form" onSubmit={handleSubmit(onSubmit)}>
+        <form id="Signup-form" className="w-100" onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
               Name

@@ -22,9 +22,9 @@ const ProductCard = ({ product }) => {
             </div>
             <div className="card-body text-center  ">
               <h5 className="card-title  ">{product.title}</h5>
-              <p className="card-text">{product.price}</p>
+              <p className="card-text fw-bold">{`Rs : ${product.price}`}</p>
 
-              <span class="btn btn-outline-success fw-bolder w-100">
+              <span className="btn btn-outline-success fw-bolder w-100">
                 BUY NOW
               </span>
             </div>
