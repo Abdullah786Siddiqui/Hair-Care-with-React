@@ -7,6 +7,7 @@ const CarySummary = () => {
   const products = useSelector((Store) => Store.cartProduct);
   let totalPrice = 0
   
+  
   {products.forEach((product) => {
     totalPrice += product.price
   })}

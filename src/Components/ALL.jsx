@@ -8,6 +8,7 @@ const ALL = () => {
  
   let handleInput = (e)=>{
     setFilterProduct( products.filter((data)=> data.category.toLowerCase().includes( e.target.value.toLowerCase())))
+    
  
   }
 

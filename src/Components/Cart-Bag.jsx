@@ -7,10 +7,11 @@ const CartBag = ({ product }) => {
   let selectRef = useRef();
   let [count, setcount] = useState(product.price);
 
-  let initialVal = product.price;
+
 
   let handleselect = (value) => {
-    setcount((initialVal = initialVal * value));
+    let total = product.price * value
+    setcount(total);
 
     return;
   };
