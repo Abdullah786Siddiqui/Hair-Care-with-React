@@ -17,7 +17,7 @@ import Create from "./Components/Create.jsx";
 
 import FavoriteItem from "./Components/FavoriteItem.jsx";
 import Checkout from "./Components/Checkout.jsx";
-import AddtoCart from "./Routes/Add-to-cart.jsx";
+import AddtoCart from "./Routes/Addtocart.jsx";
 
 const router = createBrowserRouter([
 
