@@ -15,7 +15,7 @@ body {
 .logo,
 .dropdown-item,
 .nav-link,
-.footer,.deletebtn,.cart   {
+.footer,.deletebtn,.cart ,.payment-Method ,.radio {
   cursor: pointer;
 }
 
@@ -204,7 +204,7 @@ html {
   display: flex;
   flex-direction: row;
   align-items: flex-end !important;
-  padding-right: -26px;
+  padding-right: -26px ;
 }
 .action_container {
   text-decoration: none;
@@ -478,4 +478,20 @@ a {
 .login{
   margin-bottom: 100px;
  
+}
+.heart{
+  margin-right: -3px;
+}
+input[type="radio"] {
+  transform: scale(1.2); /* Increase the size */
+
+}
+.payment-Method {
+  border: 1px solid black;
+}
+.form-select {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+  direction: ltr; /* Default behavior to open downwards */
 }

@@ -18,6 +18,8 @@ const addToCartSlice = createSlice({
   initialState: {
     cart: [],
     totalPrice: 0,
+    favoriteitem:[],
+   
   },
   reducers: {
     SelectedProduct: (state, action) => {
@@ -29,6 +31,7 @@ const addToCartSlice = createSlice({
       } else {
         state.cart.push({ ...newitem, quantity: 1 });
       }
+      
       state.totalPrice += newitem.price;
     },
 
@@ -54,10 +57,32 @@ const addToCartSlice = createSlice({
         Item.quantity = newQuantity;
         state.totalPrice += priceDifference;
       }
-      console.log("Updated total price:", state.totalPrice);
+     
     },
+    addFavorite:(state,action)=>{
+      let newItemId = action.payload;
+
+      // Check if item is already in the favorite list
+      const existingFavorite = state.favoriteitem.find(item => item.id === newItemId);
+    
+      // If the item is not in the favorite list, add it
+      if (!existingFavorite) {
+        let favoriteProduct = products.filter(item => item.id === newItemId);
+        state.favoriteitem.push(...favoriteProduct);
+      } else {
+     
+        alert('Item already in favorites!');
+      }
+    },
+    clearCart: (state) => {
+      state.cart = [];
+      state.totalPrice = 0;
+     
+    },
+  
   },
 });
+
 
 
 const HairCareStore = configureStore({

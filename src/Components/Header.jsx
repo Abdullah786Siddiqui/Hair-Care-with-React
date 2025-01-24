@@ -1,12 +1,14 @@
 import { FaRegUser } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
-import { FaRegHeart } from "react-icons/fa";
+import { HiOutlineHeart } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
 const Header = () => {
    const products = useSelector((Store) => Store.cartProduct.cart);
+     let favorite = useSelector((Store) => Store.cartProduct.favoriteitem);
+   
   
    useEffect(() => {
     window.scrollTo(0, 0);
@@ -22,8 +24,13 @@ const Header = () => {
               </Link>
             </h2>
           </div>
-          <div className="icon-div d-flex fs-4 align-items-center">
-            <Link to={"/"}><FaRegHeart className="mx-1 text-black fs-4" /></Link>
+          <div className="icon-div d-flex fs-4 align-items-center ">
+          <Link to={"/FavoriteItem"}  className="d-flex align-items-end w-25" >
+                   
+                   <span className="action_name text-black "><HiOutlineHeart className="heart text-black fs-3" /></span>
+                   <span className="bag-item-count">{favorite.length}</span>
+               </Link >
+            {/* <Link to={"/FavoriteItem"}><FaRegHeart className="mx-1 text-black fs-4" /></Link> */}
             <Link to={"/Login"}><FaRegUser className="mx-2 text-black" /></Link>
           <Link to={"/AddtoCart"} className="action_container" >
                    

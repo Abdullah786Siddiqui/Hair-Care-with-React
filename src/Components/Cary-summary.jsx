@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CarySummary = () => {
   const totalval = useSelector((Store) => Store.cartProduct.totalPrice);
@@ -49,7 +49,7 @@ const CarySummary = () => {
       </div>
 
       <div className="cont">
-        <button className="mb-3 cont2 d-block w-75 border-1 p-1 rounded-1 mx-5">Checkout</button>
+        <Link to={"/Checkout"} className="btn btn-info mb-3 cont2 d-block w-75 border-1 p-1 rounded-1 mx-5">Checkout</Link>
         <button onClick={() => navigate(-2)} className="w-75 mx-5 cont2 border-1 p-1 rounded-1">
           Continue
         </button>

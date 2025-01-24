@@ -1,7 +1,7 @@
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import products from "../data/cards";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Reaction from "../Components/Reaction";
 import { useDispatch } from "react-redux";
 import { CartAction } from "../Store/Store";
@@ -9,6 +9,8 @@ import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 const ProductDetail = () => {
   const [smShow, setSmShow] = useState(false);
+  const [favorite, setfavorite] = useState(false);
+
   const { id } = useParams();
   let dispatch = useDispatch();
   let product = products.find((product) => product.id === parseInt(id));
@@ -19,6 +21,14 @@ const ProductDetail = () => {
       setSmShow(false);
     }, 1000);
   };
+  let handleheart =(id)=>{
+    dispatch(CartAction.addFavorite(id))
+    setfavorite(true);
+    setTimeout(() => {
+      setfavorite(false);
+
+    }, 1000);
+  }
 
   return (
     <>
@@ -92,7 +102,7 @@ const ProductDetail = () => {
 </div>
 
                 
-                <button className="btn btn-danger w-50 border-0 ">
+                <button className="btn btn-danger w-50 border-0 " onClick={()=> handleheart(product.id)}>
                   <span>🤍</span>
                 </button>
               </div>
@@ -104,6 +114,11 @@ const ProductDetail = () => {
       <Modal size="sm" show={smShow} onHide={() => setSmShow(false)} className="popup" backdrop={false}  >
        
           <h6 className="p-2 modal-css m-0 text-center fw-bold "> {product.title} <br/> <span className="fw-bolder text-success">is Added</span></h6>
+        
+      </Modal>
+      <Modal size="sm" show={favorite} onHide={() => setfavorite(false)} className="popup" backdrop={false}  >
+       
+          <h6 className="p-2 modal-css m-0 text-center fw-bold "> {product.title} <br/> <span className="fw-bolder text-danger">is Added in favorite</span></h6>
         
       </Modal>
 

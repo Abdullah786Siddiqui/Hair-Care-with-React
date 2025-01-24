@@ -14,8 +14,13 @@ import ProductDetail from "./Routes/ProductDetail.jsx";
 import Men from "./Components/Men.jsx";
 import Login from "./Components/Login.jsx";
 import Create from "./Components/Create.jsx";
+
+import FavoriteItem from "./Components/FavoriteItem.jsx";
+import Checkout from "./Components/Checkout.jsx";
 import AddtoCart from "./Routes/Add-to-cart.jsx";
+
 const router = createBrowserRouter([
+
   { path: "/", element: <App /> },
   { path: "/productpages", element: <Productpages /> },
   { path: "/All", element: <ALL /> },
@@ -25,12 +30,11 @@ const router = createBrowserRouter([
   { path: "/Login", element: <Login /> },
   { path: "/Create", element: <Create /> },
   { path: "/AddtoCart", element: <AddtoCart /> },
-
-  
-
-
+  { path: "/FavoriteItem", element: < FavoriteItem/> },
+  { path: "/Checkout", element: < Checkout/> },
 
 
+ 
 
 
 ]);
