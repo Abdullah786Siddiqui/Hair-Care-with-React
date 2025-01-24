@@ -1,31 +1,37 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { MdDelete } from "react-icons/md";
 import { CartAction } from "../Store/Store";
+import { useDispatch, useSelector } from "react-redux";
 
-import { useDispatch } from "react-redux";
 const CartBag = ({ product }) => {
   let selectRef = useRef();
-  let [count, setcount] = useState(product.price);
+  const dispatch = useDispatch();
 
+  // Get the item quantity and price from Redux state
+  const itemInCart = useSelector((state) =>
+    state.cartProduct.cart.find((item) => item.id === product.id)
+  );
 
+  let count = itemInCart ? itemInCart.price * itemInCart.quantity : product.price;
 
+  // Handle dropdown change (Quantity Change)
   let handleselect = (value) => {
-    let total = product.price * value
-    setcount(total);
+    const newQuantity = parseInt(value);
 
-    return;
+    // Dispatch the updated total action with item id and selected quantity
+    dispatch(CartAction.updatedtotal({ itemId: product.id, newQuantity }));
   };
 
-  const dispatch = useDispatch();
   let handledelete = () => {
     dispatch(CartAction.RemoveProduct(product.id));
   };
+
   return (
-    <div className="cont mt-4">
+    <div className="cont mt-4 ">
       <div className="card border shadow-none">
         <div className="card-body">
-          <div className="d-flex align-items-start border-bottom pb-3">
-            <div className="me-4">
+          <div className="d-flex align-items-start border-bottom ">
+            <div className="me-2">
               <img
                 src={product.imageUrl}
                 alt=""
@@ -39,33 +45,9 @@ const CartBag = ({ product }) => {
                     {product.title}
                   </a>
                 </h5>
-                <p className="text-muted mb-0">
-                  <i className="bx bxs-star text-warning"></i>
-                  <i className="bx bxs-star text-warning"></i>
-                  <i className="bx bxs-star text-warning"></i>
-                  <i className="bx bxs-star text-warning"></i>
-                  <i className="bx bxs-star-half text-warning"></i>
-                </p>
-                <p className="mb-0 mt-1">
-                  Color : <span className="fw-medium">Gray</span>
-                </p>
               </div>
             </div>
-            <MdDelete className="fs-3 deletebtn" onClick={handledelete} />
-            <div className="flex-shrink-0 ms-2">
-              <ul className="list-inline mb-0 font-size-16">
-                <li className="list-inline-item">
-                  <a href="#" className="text-muted px-1">
-                    <i className="mdi mdi-trash-can-outline"></i>
-                  </a>
-                </li>
-                <li className="list-inline-item">
-                  <a href="#" className="text-muted px-1">
-                    <i className="mdi mdi-heart-outline"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <MdDelete className="fs-3 me-2 mt-4 deletebtn" onClick={handledelete} />
           </div>
 
           <div>
@@ -76,8 +58,7 @@ const CartBag = ({ product }) => {
                   <h5 className="mb-0 mt-2">
                     <span className="text-muted me-2">
                       <del className="font-size-16 fw-normal">
-                        {" "}
-                        {` Rs${count * 2}`}
+                        {" Rs" + product.price * 2}
                       </del>
                     </span>
                     {count}
@@ -90,6 +71,7 @@ const CartBag = ({ product }) => {
                   <div className="d-inline-flex">
                     <select
                       ref={selectRef}
+                      value={itemInCart ? itemInCart.quantity : 1} // Set the selected quantity
                       onChange={() => handleselect(selectRef.current.value)}
                       className="form-select form-select-sm w-xl"
                     >
@@ -115,7 +97,6 @@ const CartBag = ({ product }) => {
           </div>
         </div>
       </div>
-      {/* Repeat similar blocks for other products */}
     </div>
   );
 };

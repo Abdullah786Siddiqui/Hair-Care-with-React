@@ -111,7 +111,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="text-center mt-4 text-white">
+        <div className="text-center mt-4 text-white pb-2">
           &copy; 2024 - E-commerce Website All rights reserved
           <br />
           <div className="mt-2">

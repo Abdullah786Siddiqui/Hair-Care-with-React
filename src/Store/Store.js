@@ -15,19 +15,50 @@ const productSlice = createSlice({
 
 const addToCartSlice = createSlice({
   name: "cartProduct",
-  initialState: [],
+  initialState: {
+    cart: [],
+    totalPrice: 0,
+  },
   reducers: {
     SelectedProduct: (state, action) => {
-      let selectedProd = products.filter((product) =>
-        action.payload.includes(product.id)
-      );
-      state.push(...selectedProd);
+      const newitem = action.payload;
+      const existingItem = state.cart.find((item) => item.id === newitem.id);
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        state.cart.push({ ...newitem, quantity: 1 });
+      }
+      state.totalPrice += newitem.price;
     },
-    RemoveProduct:(state, action)=>{
-      return  state.filter((product)=> product.id !== action.payload)
-    }
+
+    RemoveProduct: (state, action) => {
+      const itemIdToRemove = action.payload;
+      const itemToRemove = state.cart.find((product) => product.id === itemIdToRemove);
+
+      if (itemToRemove) {
+        state.totalPrice -= itemToRemove.price * itemToRemove.quantity;
+        state.cart = state.cart.filter((product) => product.id !== itemIdToRemove);
+      }
+    },
+
+    updatedtotal: (state, action) => {
+      const { itemId, newQuantity } = action.payload;
+
+      const Item = state.cart.find((item) => item.id === itemId);
+
+      if (Item) {
+        const priceDifference = Item.price * (newQuantity - Item.quantity);
+
+        // Update quantity and totalPrice
+        Item.quantity = newQuantity;
+        state.totalPrice += priceDifference;
+      }
+      console.log("Updated total price:", state.totalPrice);
+    },
   },
 });
+
 
 const HairCareStore = configureStore({
   reducer: {

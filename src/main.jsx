@@ -14,7 +14,7 @@ import ProductDetail from "./Routes/ProductDetail.jsx";
 import Men from "./Components/Men.jsx";
 import Login from "./Components/Login.jsx";
 import Create from "./Components/Create.jsx";
-import AddtoCart from "./Routes/Add-to-Cart.jsx";
+import AddtoCart from "./Routes/Add-to-cart.jsx";
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
   { path: "/productpages", element: <Productpages /> },

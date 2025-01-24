@@ -12,8 +12,8 @@ const ProductDetail = () => {
   const { id } = useParams();
   let dispatch = useDispatch();
   let product = products.find((product) => product.id === parseInt(id));
-  let handleCartbtn = (id) => {
-    dispatch(CartAction.SelectedProduct([id]));
+  let handleCartbtn = (product) => {
+    dispatch(CartAction.SelectedProduct(product));
     setSmShow(true);
     setTimeout(() => {
       setSmShow(false);
@@ -71,7 +71,7 @@ const ProductDetail = () => {
               {/* <!-- Buttons Section --> */}
               <div className="d-flex justify-content-center gap-3">
               {/* <!-- From Uiverse.io by SouravBandyopadhyay -->  */}
-<div className="button w-50 cart bg-info fw-bold  "  onClick={() => handleCartbtn(product.id)} data-tooltip={`Price  $${product.price}`}>
+<div className="button w-50 cart bg-info fw-bold  "  onClick={() => handleCartbtn(product)} data-tooltip={`Price  $${product.price}`}>
   <div className="button-wrapper">
     <div className="text">Add To Cart</div>
     <span className="icon">

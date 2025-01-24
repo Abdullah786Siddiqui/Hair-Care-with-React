@@ -3,10 +3,14 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Header = () => {
-   const products = useSelector((Store) => Store.cartProduct);
- 
+   const products = useSelector((Store) => Store.cartProduct.cart);
+  
+   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [products.length]); 
   return (
     <header  className=" fixed-top">
       <div className="main-cont">

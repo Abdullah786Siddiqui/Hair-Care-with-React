@@ -32,7 +32,7 @@ const Productpages = () => {
           </p>
         </div>
       )}
-      <div className="container">
+      <div className="container" >
         <div className="row">
           {FilterProduct.map((product) => (
             <ProductCard

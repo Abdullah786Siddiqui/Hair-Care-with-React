@@ -467,3 +467,15 @@ a {
 .cartmargin{
   margin-bottom: 200px;
 }
+.cont2:hover{
+  background-color: Cyan;
+  font-weight: bold;
+  color: white;
+  border: none;
+
+
+}
+.login{
+  margin-bottom: 100px;
+ 
+}

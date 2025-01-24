@@ -6,8 +6,9 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
 const AddtoCart = () => {
-  const products = useSelector((Store) => Store.cartProduct);
- 
+  const products = useSelector((Store) => Store.cartProduct.cart);
+
+  
   return (
     <>
       <Header />
