@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MdDelete } from "react-icons/md";
 import { CartAction } from "../Store/Store";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,25 +7,27 @@ const CartBag = ({ product }) => {
   let selectRef = useRef();
   const dispatch = useDispatch();
 
-  // Get the item quantity and price from Redux state
   const itemInCart = useSelector((state) =>
     state.cartProduct.cart.find((item) => item.id === product.id)
   );
 
-  let count = itemInCart ? itemInCart.price * itemInCart.quantity : product.price;
+  let count = itemInCart
+    ? itemInCart.price * itemInCart.quantity
+    : product.price;
 
-  // Handle dropdown change (Quantity Change)
   let handleselect = (value) => {
     const newQuantity = parseInt(value);
 
-    // Dispatch the updated total action with item id and selected quantity
     dispatch(CartAction.updatedtotal({ itemId: product.id, newQuantity }));
   };
 
   let handledelete = () => {
     dispatch(CartAction.RemoveProduct(product.id));
   };
-
+  let [cutprice, setcutprice] = useState();
+  useEffect(() => {
+    setcutprice(count * 2);
+  }, [count]);
   return (
     <div className="cont mt-4 ">
       <div className="card border shadow-none">
@@ -47,7 +49,10 @@ const CartBag = ({ product }) => {
                 </h5>
               </div>
             </div>
-            <MdDelete className="fs-3 me-2 mt-4 deletebtn" onClick={handledelete} />
+            <MdDelete
+              className="fs-3 me-2 mt-4 deletebtn"
+              onClick={handledelete}
+            />
           </div>
 
           <div>
@@ -57,9 +62,7 @@ const CartBag = ({ product }) => {
                   <p className="text-muted mb-2">Price</p>
                   <h5 className="mb-0 mt-2">
                     <span className="text-muted me-2">
-                      <del className="font-size-16 fw-normal">
-                        {" Rs" + product.price * 2}
-                      </del>
+                      <del className="font-size-16 fw-normal">{cutprice}</del>
                     </span>
                     {count}
                   </h5>

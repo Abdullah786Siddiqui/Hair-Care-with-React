@@ -18,8 +18,7 @@ const addToCartSlice = createSlice({
   initialState: {
     cart: [],
     totalPrice: 0,
-    favoriteitem:[],
-   
+    favoriteitem: [],
   },
   reducers: {
     SelectedProduct: (state, action) => {
@@ -31,17 +30,21 @@ const addToCartSlice = createSlice({
       } else {
         state.cart.push({ ...newitem, quantity: 1 });
       }
-      
+
       state.totalPrice += newitem.price;
     },
 
     RemoveProduct: (state, action) => {
       const itemIdToRemove = action.payload;
-      const itemToRemove = state.cart.find((product) => product.id === itemIdToRemove);
+      const itemToRemove = state.cart.find(
+        (product) => product.id === itemIdToRemove
+      );
 
       if (itemToRemove) {
         state.totalPrice -= itemToRemove.price * itemToRemove.quantity;
-        state.cart = state.cart.filter((product) => product.id !== itemIdToRemove);
+        state.cart = state.cart.filter(
+          (product) => product.id !== itemIdToRemove
+        );
       }
     },
 
@@ -53,37 +56,31 @@ const addToCartSlice = createSlice({
       if (Item) {
         const priceDifference = Item.price * (newQuantity - Item.quantity);
 
-        // Update quantity and totalPrice
         Item.quantity = newQuantity;
         state.totalPrice += priceDifference;
       }
-     
     },
-    addFavorite:(state,action)=>{
+    addFavorite: (state, action) => {
       let newItemId = action.payload;
 
-      // Check if item is already in the favorite list
-      const existingFavorite = state.favoriteitem.find(item => item.id === newItemId);
-    
-      // If the item is not in the favorite list, add it
+     
+      const existingFavorite = state.favoriteitem.find(
+        (item) => item.id === newItemId
+      );
+
       if (!existingFavorite) {
-        let favoriteProduct = products.filter(item => item.id === newItemId);
+        let favoriteProduct = products.filter((item) => item.id === newItemId);
         state.favoriteitem.push(...favoriteProduct);
       } else {
-     
-        alert('Item already in favorites!');
+        alert("Item already in favorites!");
       }
     },
     clearCart: (state) => {
       state.cart = [];
       state.totalPrice = 0;
-     
     },
-  
   },
 });
-
-
 
 const HairCareStore = configureStore({
   reducer: {

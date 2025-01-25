@@ -12,13 +12,7 @@ const ProductCard = ({ product }) => {
                 className="card-img-top normal-img"
                 alt="Product"
               />
-              {/* Hover image */}
-              {/* <img
-              src={product.hoverImageUrl}
-              className="card-img-top hover-img position-absolute top-0 start-0 w-100 h-100"
-              alt="Hover image"
-              style={{ opacity: 0 }}
-            /> */}
+            
             </div>
             <div className="card-body text-center  ">
               <h5 className="card-title  ">{product.title}</h5>

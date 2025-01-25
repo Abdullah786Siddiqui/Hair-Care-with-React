@@ -7,9 +7,9 @@ import Modal from "react-bootstrap/Modal";
 
 const Login = () => {
   const Navigate = useNavigate();
-  const [profile, setprofile] = useState(false); // To control modal visibility
-  let [loader, setloader] = useState(false); // To show loader
-  let [errormessege, seterrormessege] = useState(false); // To show error message
+  const [profile, setprofile] = useState(false); 
+  let [loader, setloader] = useState(false);
+  let [errormessege, seterrormessege] = useState(false); 
 
   const {
     register,
@@ -31,6 +31,9 @@ const Login = () => {
         setprofile(true); // Show modal after loader
         setTimeout(() => {
           setprofile(false); // Hide modal after 2 seconds
+          if(Navigate(-2) === "/Checkout"){
+            Navigate(2)
+          }
           Navigate("/"); // Redirect to home page
         }, 1000);
       }, 2000); // Wait for 2 seconds before hiding the loader

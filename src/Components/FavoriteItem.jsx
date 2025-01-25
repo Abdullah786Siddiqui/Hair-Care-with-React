@@ -10,8 +10,8 @@ const FavoriteItem = () => {
   return (
     <>
       <Header />
-      <h3 id="product-heading" className="text-center mt-3">Your Favorite Items</h3>
-      <p id="product-description" className="text-center">Browse through your favorite products and shop now!</p>
+      <h3 id="product-heading" className="text-center mt-3 ">Your Favorite Items</h3>
+      <p id="product-description" className="text-center mb-4">Browse through your favorite products and shop now!</p>
 
 
       <div className="container">

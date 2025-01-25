@@ -1,13 +1,10 @@
-
 import Header from "./Header";
 import Footer from "./Footer";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-
 const Contact = () => {
-
-  const Navigate =useNavigate()
+  const Navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -19,7 +16,7 @@ const Contact = () => {
 
   let onSubmit = () => {
     alert("Thanks for your Contact");
-    Navigate("/")
+    Navigate("/");
 
     reset();
   };

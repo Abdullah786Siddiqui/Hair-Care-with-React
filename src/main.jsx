@@ -14,7 +14,6 @@ import ProductDetail from "./Routes/ProductDetail.jsx";
 import Men from "./Components/Men.jsx";
 import Login from "./Components/Login.jsx";
 import Create from "./Components/Create.jsx";
-
 import FavoriteItem from "./Components/FavoriteItem.jsx";
 import Checkout from "./Components/Checkout.jsx";
 import AddtoCart from "./Routes/Addtocart.jsx";

@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Header from "./Header";
 import Footer from "./Footer";
 import { useForm } from "react-hook-form";
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import { CartAction } from "../Store/Store";
-
 
 const Checkout = () => {
   const products = useSelector((state) => state.cartProduct.cart);
   const totalPrice = useSelector((state) => state.cartProduct.totalPrice);
   const [show, setShow] = useState(false);
-   const navigate = useNavigate()
-const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -28,23 +27,23 @@ const dispatch = useDispatch()
   const handleShow = () => setShow(true);
   const handleClose = () => {
     setShow(false);
-    dispatch(CartAction.clearCart()); 
-    navigate("/")
-  }
+    dispatch(CartAction.clearCart());
+    navigate("/");
+  };
 
   let onSubmit = () => {
-   if(products.length >0){
-       
-    reset()
-
-    handleShow(); 
-   
-
-
-   }else{
-    alert("Your Cart is Empty")
-    navigate(-3)
-   }
+    if (products.length > 0) {
+      if (localStorage.getItem("formdata")) {
+        reset();
+  
+        handleShow();
+      }else{
+        navigate("/Create")
+      }
+    }else {
+      alert("Your Cart is Empty");
+      navigate(-3);
+    }
   };
 
   return (
@@ -96,7 +95,11 @@ const dispatch = useDispatch()
           {/* Billing Section */}
           <div className="col-md-7 col-lg-8">
             <h4 className="mb-3">Billing address</h4>
-            <form className="needs-validation" onSubmit={handleSubmit(onSubmit)} noValidate>
+            <form
+              className="needs-validation"
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
+            >
               <div className="row g-3">
                 <div className="col-sm-6">
                   <label htmlFor="firstName" className="form-label">
@@ -115,9 +118,7 @@ const dispatch = useDispatch()
                     })}
                   />
                   {errors.name && (
-                    <small className="text-danger">
-                      {errors.name.message}
-                    </small>
+                    <small className="text-danger">{errors.name.message}</small>
                   )}
                 </div>
 
@@ -161,7 +162,11 @@ const dispatch = useDispatch()
                       },
                     })}
                   />
-                  {errors.email && <small className="text-danger">{errors.email.message}</small>}
+                  {errors.email && (
+                    <small className="text-danger">
+                      {errors.email.message}
+                    </small>
+                  )}
                 </div>
 
                 <div className="col-12">
@@ -176,14 +181,23 @@ const dispatch = useDispatch()
                       required: "Address is Required",
                     })}
                   />
-                  {errors.Address && <small className="text-danger">{errors.Address.message}</small>}
+                  {errors.Address && (
+                    <small className="text-danger">
+                      {errors.Address.message}
+                    </small>
+                  )}
                 </div>
 
                 <div className="col-md-5">
                   <label htmlFor="country" className="form-label mb-4">
                     City
                   </label>
-                  <select className="form-select" {...register("city", { required: "Please select a city" })} id="country" required>
+                  <select
+                    className="form-select"
+                    {...register("city", { required: "Please select a city" })}
+                    id="country"
+                    required
+                  >
                     <option value="">Choose...</option>
                     <option>Karachi</option>
                     <option>Punjab</option>
@@ -193,8 +207,8 @@ const dispatch = useDispatch()
                   </select>
                 </div>
                 {errors.city && (
-    <small className="text-danger">{errors.city.message}</small>
-  )}
+                  <small className="text-danger">{errors.city.message}</small>
+                )}
               </div>
 
               {/* Payment Section */}
@@ -205,7 +219,9 @@ const dispatch = useDispatch()
                     id="credit"
                     name="paymentMethod"
                     type="radio"
-                    {...register("paymentMethod", { required: "Please select a payment method" })}
+                    {...register("paymentMethod", {
+                      required: "Please select a payment method",
+                    })}
                     className="form-check-input"
                     required
                   />
@@ -217,8 +233,9 @@ const dispatch = useDispatch()
                   <input
                     id="debit"
                     name="paymentMethod"
-                    {...register("paymentMethod", { required: "Please select a payment method" })}
-
+                    {...register("paymentMethod", {
+                      required: "Please select a payment method",
+                    })}
                     type="radio"
                     className="form-check-input"
                     required
@@ -231,8 +248,9 @@ const dispatch = useDispatch()
                   <input
                     id="cash"
                     name="paymentMethod"
-                    {...register("paymentMethod", { required: "Please select a payment method" })}
-
+                    {...register("paymentMethod", {
+                      required: "Please select a payment method",
+                    })}
                     type="radio"
                     className="form-check-input"
                     required
@@ -242,8 +260,10 @@ const dispatch = useDispatch()
                   </label>
                 </div>
                 {errors.paymentMethod && (
-  <small className="text-danger">{errors.paymentMethod.message}</small>
-)}
+                  <small className="text-danger">
+                    {errors.paymentMethod.message}
+                  </small>
+                )}
               </div>
 
               <hr className="my-4" />
@@ -256,7 +276,7 @@ const dispatch = useDispatch()
       </div>
 
       {/* Modal for Confirmation */}
-      <Modal show={show} onHide={handleClose} centered >
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Order Confirmation</Modal.Title>
         </Modal.Header>
@@ -265,7 +285,6 @@ const dispatch = useDispatch()
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-         
         </Modal.Footer>
       </Modal>
 
