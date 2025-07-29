@@ -39,8 +39,8 @@ const Features = () => {
             data-aos-delay="100"
           >
             <div className="image-stack">
-              <img src="public/lamp1.jpg" alt="" className="stack-front" />
-              <img src="public/lamp2.jpg" alt="" className="stack-back" />
+              <img src="/lamp1.jpg" alt="" className="stack-front" />
+              <img src="/lamp2.jpg" alt="" className="stack-back" />
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@ const Features = () => {
           >
             <Link to={"/productdetail/24"}>
               <img
-                src="public/HairGrowthPowderjar max orange.webp"
+                src="/HairGrowthPowderjar max orange.webp"
                 className="img-fluid"
                 style={{ cursor: "pointer" }}
               />
